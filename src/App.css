@@ -20,7 +20,16 @@ body {
   margin: 0;
 }
 
-/* PAGE */
+:root {
+  --color-primary: #c62828;
+  --color-primary-light: #e53935;
+  --color-bg-card: #fff;
+  --color-border: #e0e0e0;
+  --radius: 16px;
+  --shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* === Layout general === */
 .rn-page {
   display: flex;
   flex-direction: column;
