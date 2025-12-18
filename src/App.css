@@ -1,22 +1,17 @@
-/* Estilos profesionales para RecetasNavidenas.jsx */
-
-:root {
-  --color-bg: #faf7f4;
-  --color-primary: #c0392b;
-  --color-primary-light: #e74c3c;
-  --color-dark: #2c3e50;
-  --color-gray: #7f8c8d;
-  --radius-lg: 1.25rem;
-  --radius-sm: 0.5rem;
-  --shadow-soft: 0 6px 16px rgba(0,0,0,0.08);
-  --shadow-card: 0 8px 20px rgba(0,0,0,0.12);
-  --transition: all 0.25s ease;
+/* === Reset básico === */
+* {
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--color-bg);
-  font-family: "Inter", sans-serif;
-  color: var(--color-dark);
+  font-family: "Inter", system-ui, sans-serif;
+  background: #fafafa;
+  color: #222;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra la página */
   margin: 0;
 }
 
@@ -31,161 +26,155 @@ body {
 
 /* === Layout general === */
 .rn-page {
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
-/* HEADER */
+/* === Header === */
 .rn-header {
-  background: linear-gradient(135deg, #c0392b, #e74c3c);
-  padding: 3rem 1.5rem;
-  color: white;
+  background: linear-gradient(135deg, #c62828, #8e0000);
+  padding: 20px;
+  color: #fff;
   text-align: center;
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow);
 }
 
 .rn-title {
-  font-size: 2.8rem;
-  margin: 0;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
 }
 
 .rn-subtitle {
-  font-size: 1.1rem;
-  margin-top: 0.5rem;
+  font-size: 1.2rem;
   opacity: 0.9;
 }
 
-/* MAIN */
+/* === Main === */
 .rn-main {
-  flex: 1;
-  max-width: 1200px;
-  margin: auto;
-  padding: 2rem 1.5rem;
+  width: 100%; /* ocupar todo el ancho del contenedor */
+  padding: 2rem 1rem 4rem;
 }
 
-/* CONTROLS */
+/* === Controles === */
 .rn-controls {
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 2rem;
-  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .rn-search,
 .rn-filter {
-  padding: 0.8rem 1rem;
-  border: 2px solid #ddd;
-  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
   font-size: 1rem;
-  background: white;
-  transition: var(--transition);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s ease;
 }
 
 .rn-search:focus,
 .rn-filter:focus {
   border-color: var(--color-primary);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(231,76,60,0.25);
 }
 
-/* GRID */
+/* === Grid de recetas === */
 .rn-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  width: 100%; /* asegurar que ocupe todo el contenedor */
 }
 
-/* CARD */
+/* === Tarjeta === */
 .rn-card {
-  background: white;
-  border-radius: var(--radius-lg);
+  background: var(--color-bg-card);
   padding: 1.5rem;
-  box-shadow: var(--shadow-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  transition: var(--transition);
+  gap: 1rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .rn-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.16);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
 }
 
 .rn-card-top {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  margin-bottom: 0.75rem;
 }
 
 .rn-card-badge {
+  align-self: flex-start;
   background: var(--color-primary);
-  color: white;
-  display: inline-block;
+  color: #fff;
   padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.8rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
   font-weight: 600;
-  width: fit-content;
+  letter-spacing: 0.5px;
 }
 
 .rn-card-title {
   font-size: 1.4rem;
-  margin: 0;
+  font-weight: 700;
+  margin-top: 0.5rem;
 }
 
 .rn-card-desc {
+  color: #555;
   font-size: 0.95rem;
-  color: var(--color-gray);
-  margin-bottom: 1rem;
-  line-height: 1.45;
 }
 
-/* META */
 .rn-card-meta {
   list-style: none;
-  padding: 0;
-  margin: 0 0 1rem;
   display: flex;
   gap: 1.5rem;
   font-size: 0.9rem;
-  color: var(--color-dark);
+  color: #444;
 }
 
-/* TAGS */
+/* === Tags === */
 .rn-card-tags {
-  margin-top: auto;
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
 }
 
 .rn-tag {
-  background: #f0eaea;
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.8rem;
-  color: var(--color-dark);
+  background: #f2f2f2;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+  border-radius: 12px;
+  color: #555;
+  border: 1px solid var(--color-border);
+  font-weight: 500;
 }
 
-/* BUTTONS */
+/* === Botones === */
 .rn-btn {
-  padding: 0.7rem 1rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  border-radius: var(--radius-sm);
-  border: none;
   cursor: pointer;
-  transition: var(--transition);
+  font-size: 0.95rem;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+  border: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+  font-weight: 600;
 }
 
 .rn-btn-primary {
   background: var(--color-primary);
-  color: white;
+  color: #fff;
 }
 
 .rn-btn-primary:hover {
@@ -194,20 +183,28 @@ body {
 
 .rn-btn-ghost {
   background: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
+  border: 1px solid var(--color-border);
+  color: #444;
 }
 
 .rn-btn-ghost:hover {
-  background: var(--color-primary);
-  color: white;
+  background: #f5f5f5;
 }
 
-/* FOOTER */
+.rn-btn:active {
+  transform: scale(0.96);
+}
+
+.rn-card-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+/* === Footer === */
 .rn-footer {
   margin-top: 3rem;
   text-align: center;
-  padding: 1rem;
   font-size: 0.9rem;
-  color: var(--color-gray);
+  color: #777;
 }
