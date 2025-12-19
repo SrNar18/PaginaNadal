@@ -12,7 +12,7 @@ const RECETAS = [
   },
   {
     id: 2,
-    titulo: 'Pernil navideño',
+    titulo: 'Pernil nadalenc',
     imagen: 'img2.png',
     tiempo: '5h',
     dificultad: 'Alta',
