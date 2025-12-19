@@ -1,4 +1,3 @@
-// Archivo: RecetasNavidenas.jsx
 import React from 'react';
 import "./app.css";
 
