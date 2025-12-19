@@ -1,4 +1,4 @@
-/* === Reset básico === */
+
 * {
   padding: 0;
   box-sizing: border-box;
@@ -11,7 +11,7 @@ body {
   line-height: 1.6;
   display: flex;
   flex-direction: column;
-  align-items: center; /* centra la página */
+  align-items: center;
   margin: 0;
 }
 
@@ -24,14 +24,12 @@ body {
   --shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 
-/* === Layout general === */
 .rn-page {
   width: 100vw;
   display: flex;
   flex-direction: column;
 }
 
-/* === Header === */
 .rn-header {
   background: linear-gradient(135deg, #c62828, #8e0000);
   padding: 20px;
@@ -52,13 +50,11 @@ body {
   opacity: 0.9;
 }
 
-/* === Main === */
 .rn-main {
-  width: 100%; /* ocupar todo el ancho del contenedor */
+  width: 100%; 
   padding: 2rem 1rem 4rem;
 }
 
-/* === Controles === */
 .rn-controls {
   display: flex;
   gap: 1rem;
@@ -82,15 +78,13 @@ body {
   border-color: var(--color-primary);
 }
 
-/* === Grid de recetas === */
 .rn-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  width: 100%; /* asegurar que ocupe todo el contenedor */
+  width: 100%; 
 }
 
-/* === Tarjeta === */
 .rn-card {
   background: var(--color-bg-card);
   padding: 1.5rem;
@@ -144,7 +138,6 @@ body {
   color: #444;
 }
 
-/* === Tags === */
 .rn-card-tags {
   display: flex;
   gap: 0.5rem;
@@ -161,7 +154,6 @@ body {
   font-weight: 500;
 }
 
-/* === Botones === */
 .rn-btn {
   cursor: pointer;
   font-size: 0.95rem;
@@ -201,10 +193,11 @@ body {
   margin-top: auto;
 }
 
-/* === Footer === */
 .rn-footer {
   margin-top: 3rem;
   text-align: center;
   font-size: 0.9rem;
   color: #777;
 }
+
+

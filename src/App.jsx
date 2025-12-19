@@ -1,13 +1,11 @@
-// Archivo: RecetasNavidenas.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import "./app.css";
-
 
 const RECETAS = [
   {
     id: 1,
     titulo: 'Panettone casero',
-    descripcion: 'Esponjoso y con frutas confitadas — ideal para compartir.',
+    imagen: 'img1.png',
     tiempo: '2h 30m',
     dificultad: 'Media',
     tags: ['Postre','Tradicional']
@@ -15,15 +13,15 @@ const RECETAS = [
   {
     id: 2,
     titulo: 'Pernil navideño',
-    descripcion: 'Asado lento con adobo cítrico y hierbas.',
+    imagen: 'img2.png',
     tiempo: '5h',
     dificultad: 'Alta',
     tags: ['Plato fuerte','Carnes']
   },
   {
     id: 3,
-    titulo: 'Ensalada agridulce de manzana',
-    descripcion: 'Fresca, con nueces y aliño cremoso.',
+    titulo: 'Ensalada agridulce',
+    imagen: 'img3.png',
     tiempo: '20m',
     dificultad: 'Baja',
     tags: ['Acompañante','Vegetariano']
@@ -31,27 +29,63 @@ const RECETAS = [
   {
     id: 4,
     titulo: 'Galletas de jengibre',
-    descripcion: 'Crujientes por fuera y suaves por dentro.',
+    imagen: 'img4.png',
     tiempo: '45m',
     dificultad: 'Baja',
     tags: ['Postre','Galletas']
+  },
+  {
+    id: 5,
+    titulo: 'Especial falu',
+    imagen: 'img5.png',
+    tiempo: '20m',
+    dificultad: 'Baja',
+    tags: ['Postre','Vegetariano']
   }
 ];
 
 export default function RecetasNavidenas() {
+  const [filter, setFilter] = useState('all');
+  const [search, setSearch] = useState('');
+
+  const recetasFiltradas = RECETAS.filter(receta => {
+    const coincideBusqueda =
+      receta.titulo.toLowerCase().includes(search.toLowerCase());
+
+    const coincideFiltro =
+      filter === 'all' ||
+      receta.tags.some(tag =>
+        tag.toLowerCase().includes(filter)
+      );
+
+    return coincideBusqueda && coincideFiltro;
+  });
+
   return (
     <div className="rn-page">
       <header className="rn-header">
         <div className="rn-header-inner">
           <h1 className="rn-title">Recetas Navideñas</h1>
-          <p className="rn-subtitle">Ideas festivas para tu mesa — probalas y adaptalas a tu gusto</p>
+          <p className="rn-subtitle">
+            Ideas festivas para tu mesa — probalas y adaptalas a tu gusto
+          </p>
         </div>
       </header>
 
       <main className="rn-main">
         <section className="rn-controls">
-          <input className="rn-search" placeholder="Buscar receta..." aria-label="Buscar receta" />
-          <select className="rn-filter" aria-label="Filtrar por categoría">
+          <input
+            className="rn-search"
+            placeholder="Buscar receta..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
+          <select
+            className="rn-filter"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          >
             <option value="all">Todas</option>
             <option value="postre">Postres</option>
             <option value="plato">Platos fuertes</option>
@@ -59,15 +93,17 @@ export default function RecetasNavidenas() {
           </select>
         </section>
 
-        <section className="rn-grid" aria-live="polite">
-          {RECETAS.map(receta => (
+        <section className="rn-grid">
+          {recetasFiltradas.map(receta => (
             <article key={receta.id} className="rn-card">
               <div className="rn-card-top">
                 <div className="rn-card-badge">{receta.tags[0]}</div>
                 <h2 className="rn-card-title">{receta.titulo}</h2>
               </div>
 
-              <p className="rn-card-desc">{receta.descripcion}</p>
+              <div className="rn-card-image">
+                <img src={receta.imagen} alt={receta.titulo} />
+              </div>
 
               <ul className="rn-card-meta">
                 <li>⏱ {receta.tiempo}</li>
@@ -88,9 +124,10 @@ export default function RecetasNavidenas() {
           ))}
         </section>
 
-        <footer className="rn-footer">© {new Date().getFullYear()} — Nochebuena en tu cocina</footer>
+        <footer className="rn-footer">
+          © {new Date().getFullYear()} — Nochebuena en tu cocina
+        </footer>
       </main>
     </div>
   );
 }
-
